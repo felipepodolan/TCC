@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.24)  24 JAN 2018 22:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.24)  24 JAN 2018 23:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -7,7 +7,11 @@ entering extended mode
 (./TCC_main.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
-(/Users/felipe/Library/texmf/tex/latex/coppe/coppe.cls
+(./coppetex/coppe.cls
+
+LaTeX Warning: You have requested document class `coppetex/coppe',
+               but the document class provides `coppe'.
+
 Document Class: coppe 2011/02/08\ v2.2\ COPPE Dissertations and Thesis
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
@@ -471,11 +475,13 @@ Package hyperref Info: Option `breaklinks' set `true' on input line 57.
 Package hyperref Info: Option `raiselinks' set `true' on input line 57.
 Package hyperref Info: Option `pageanchor' set `true' on input line 57.
 
-<coppe-logo.pdf, id=40, 177.463pt x 76.285pt>
-File: coppe-logo.pdf Graphic file (type pdf)
- <use coppe-logo.pdf>
-Package pdftex.def Info: coppe-logo.pdf used on input line 57.
-(pdftex.def)             Requested size: 177.46255pt x 76.2848pt.
+<coppetex/escola-politecnica.png, id=40, 150.5625pt x 142.5325pt>
+File: coppetex/escola-politecnica.png Graphic file (type png)
+
+<use coppetex/escola-politecnica.png>
+Package pdftex.def Info: coppetex/escola-politecnica.png used on input line 57.
+
+(pdftex.def)             Requested size: 150.56212pt x 142.53214pt.
 
 Underfull \hbox (badness 6792) in paragraph at lines 57--57
 \OT1/cmr/m/n/12 como parte dos requisitos necess^^Sarios ^^Ra
@@ -497,8 +503,8 @@ Package babel Info: Redefining portuges shorthand "|
  [1
 
 
-{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} </Users/
-felipe/Library/texmf/tex/latex/coppe/coppe-logo.pdf>]
+{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./coppe
+tex/escola-politecnica.png>]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 58.
 Package babel Info: Redefining portuges shorthand "|
@@ -767,9 +773,9 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 141.
  ) 
 Here is how much of TeX's memory you used:
- 7721 strings out of 492995
- 110162 string characters out of 6132704
- 219269 words of memory out of 5000000
+ 7722 strings out of 492995
+ 110175 string characters out of 6132704
+ 219295 words of memory out of 5000000
  11101 multiletter control sequences out of 15000+600000
  11889 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -785,10 +791,10 @@ al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/loca
 l/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local
 /texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/
 texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ./TCC_main.pdf (17 pages, 167777 bytes).
+Output written on ./TCC_main.pdf (17 pages, 147824 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
- 157 compressed objects within 2 object streams
+ 188 PDF objects out of 1000 (max. 8388607)
+ 155 compressed objects within 2 object streams
  30 named destinations out of 1000 (max. 500000)
  78 words of extra memory for PDF output out of 10000 (max. 10000000)
 
