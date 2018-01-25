@@ -30,7 +30,7 @@
 %% Author(s): Vicente Helano,
 %%            George Ainsworth
 %% 
-%% \CheckSum{1416}
+%% \CheckSum{1391}
 %% \CharacterTable
 %%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -48,28 +48,39 @@
 %%   Right brace   \}     Tilde         \~}
 %%
 \def\filename{coppe.dtx}
-\def\fileversion{v2.2}
-\def\filedate{2011/02/08}
+\def\fileversion{v2.1.1}
+\def\filedate{2009/11/17}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{coppe}[\filedate\ \fileversion\ COPPE Dissertations and Thesis]
 \LoadClass[12pt,a4paper,oneside]{book}
 \RequirePackage[sort&compress]{natbib}
 \RequirePackage{hyphenat}
 \RequirePackage{lastpage}
+\RequirePackage{hyperref}
 \RequirePackage[english,brazil]{babel}
 \RequirePackage{ifthen}
 \RequirePackage{graphicx}
 \RequirePackage{setspace}
 \RequirePackage{tabularx}
 \RequirePackage{eqparbox}
-\RequirePackage{ltxcmds}
 \RequirePackage[a4paper,bindingoffset=0.0cm,vcentering=true,%
 top=2.5cm,bottom=2.5cm,left=3.0cm,right=3.0cm]{geometry}
 \def\CoppeTeX{{\rm C\kern-.05em{\sc o\kern-.025em p\kern-.025em
 p\kern-.025em e}}\kern-.08em
 T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
+\newboolean{isdraft}
 \newboolean{maledoc}
 \setboolean{maledoc}{false}
+\setboolean{isdraft}{false}
+\DeclareOption{grad}{%
+  \newcommand{\@degree}{Engenheiro}
+  \newcommand{\@degreename}{Gradua{\c c}{\~ a}o}
+  \newcommand{\local@degname}{Engenheiro}
+  \newcommand{\foreign@degname}{Engineer}
+  \setboolean{maledoc}{true}
+  \newcommand\local@doctype{Projeto}
+  \newcommand\foreign@doctype{Undergraduate Project}
+}
 \DeclareOption{msc}{%
   \newcommand{\@degree}{M.Sc.}
   \newcommand{\@degreename}{Mestrado}
@@ -95,14 +106,28 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand\local@doctype{Tese}
   \newcommand\foreign@doctype{Thesis}
 }
+\DeclareOption{draft}{%
+  \setboolean{isdraft}{true}
+  \ClassWarning{coppe}{draft mode is ON}%
+}
 \DeclareOption{numbers}{%
   \PassOptionsToPackage{numbers}{natbib}
+}
+\DeclareOption{pdftex}{%
+  \PassOptionsToPackage{pdftex}{hyperref,graphicx}
+  \PassOptionsToPackage{plainpages=false,pdfpagelabels}{hyperref}
+}
+\DeclareOption{dvips}{%
+  \PassOptionsToPackage{dvips}{hyperref,graphicx}
 }
 \onehalfspacing
 \DeclareOption{doublespacing}{%
   \doublespacing
 }
 \ProcessOptions\relax
+\newcommand\university[1]{%
+  \renewcommand\local@universityname{#1}
+}
 \newcommand\department[1]{%
   \ifthenelse{\equal{#1}{PEB}}
     {\global\def\local@deptname{Engenharia Biom{\' e}dica}
@@ -161,7 +186,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 }
 \newcount\@examiner\@examiner0
 \newcommand\examiner[3]{%
-  \global\@namedef{CoppeExaminer:\expandafter\the\@examiner}{#1\ #2, #3}
+  \global\@namedef{CoppeExaminerTitle:\expandafter\the\@examiner}{#1}
+  \global\@namedef{CoppeExaminerName:\expandafter\the\@examiner}{#2}
+  \global\@namedef{CoppeExaminerSurname:\expandafter\the\@examiner}{#3}
   \global\advance\@examiner by 1
 }
 \renewcommand\author[2]{%
@@ -178,11 +205,25 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\foreign@monthname{\ifcase\month\or
   January\or February\or March\or April\or May\or June\or
   July\or August\or September\or October\or November\or December\fi}
+\newcommand\place[3]{%
+  \renewcommand\local@cityname{#1}
+  \renewcommand\local@statename{#2}
+  \renewcommand\local@countryname{#3}
+}
 \newcounter{keywords}
 \newcommand\keyword[1]{%
   \global\@namedef{CoppeKeyword:\expandafter\the\c@keywords}{#1}
   \global\addtocounter{keywords}{1}
 }
+
+%%%%%%%%%%%%
+\newcounter{foreignkeywords}
+\newcommand\foreignkeyword[1]{%
+  \global\@namedef{ForeignKeyword:\expandafter\the\c@foreignkeywords}{#1}
+  \global\addtocounter{foreignkeywords}{1}
+}
+%%%%%%%%%%%%%
+
 \renewcommand\frontmatter{%
   \cleardoublepage
   \@mainmatterfalse
@@ -192,10 +233,14 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \makefrontpage
   \clearpage
   \pagestyle{plain}
-  \ifthenelse{\boolean{maledoc}}{}{\makecatalog}%
+  %\makedisclaimerpage
+  \clearpage
+  \pagestyle{plain}
+  \makecatalog
 }
 \renewcommand\mainmatter{%
-  \coppe@mainBegin
+  \immediate\write\@auxout{%
+    \string\newlabel{front:pageno}{{}{\Roman{page}}{}{page.\roman{page}}{}}}
   \cleardoublepage
   \@mainmattertrue
   \pagestyle{plain}
@@ -206,9 +251,118 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \else
     \clearpage
   \fi}
+
+%%%%%%%%%
+%\renewcommand\maketitle{%
+%\pagenumbering{alph}
+%\config@hypersetup
+%  \begin{titlepage}
+%  \begin{flushleft}
+%  \setlength\baselineskip{0pt}
+%  \setlength\parskip{1mm}
+%  \makebox[20mm][c]{\includegraphics{figs/minerva}}\par
+%  \makebox[20mm][c]{\bf\sf\small Poli/COPPE/UFRJ}
+%  \end{flushleft}
+%  \begin{center}
+%  \nohyphens{\MakeUppercase\local@title}\par
+%  \vspace*{28mm}
+%  \nohyphens{\@authname\ \@authsurn}\par
+%  \end{center}
+%  \vspace*{16mm}
+%  \begin{flushright}
+%  \begin{minipage}{80mm}
+%  \frontcover@maintext
+%  \end{minipage}\par
+%  \vspace*{7.5mm}
+%  \nohyphens{%
+%  \begin{tabularx}{80mm}[b]{@{}l@{ }X@{}}
+%    \local@advisorstring: &
+%    \count1=0
+%    \toks@={}
+%    \@whilenum \count1<\@advisor \do{%
+%    \ifcase\count1 % same as \ifnum0=\count1
+%      \toks@=\expandafter{\csname CoppeAdvisorName:\the\count1%
+%        \expandafter\endcsname\expandafter\space%
+%        \csname CoppeAdvisorSurname:\the\count1\endcsname\\}
+%    \else
+%      \toks@=\expandafter\expandafter\expandafter{%
+%        \expandafter\the\expandafter\toks@%
+%        \expandafter&\expandafter\space%
+%        \csname CoppeAdvisorName:\the\count1\expandafter\endcsname%
+%        \expandafter\space\csname CoppeAdvisorSurname:\the\count1\endcsname\\
+%      }%
+%    \fi
+%    \advance\count1 by 1}
+%    \the\toks@
+%  \end{tabularx}}\par
+%  \end{flushright}
+%  \vspace*{\fill}
+%  \begin{center}
+%  \local@cityname\par
+%  \local@monthname\ de \number\year
+%  \end{center}
+%  \end{titlepage}
+%  \global\let\maketitle\relax%
+%  \global\let\and\relax}
+%%%%%%%%%
+
+\newcommand\makefrontpage{%
+  \begin{center}
+    \sloppy\nohyphens{\MakeUppercase\local@title}\par
+    \vspace*{7mm}
+    {\@authname\ \@authsurn}\par
+  \end{center}\par
+  \vspace*{4mm}
+  \frontpage@maintext
+  \vspace*{8mm}
+  \noindent\local@approvedname:\par
+     \begin{center}
+  \begin{flushright}
+        \count1=0
+        \@whilenum \count1<\@examiner \do {
+            \vskip26\p@ \baselineskip12pt
+        \eqparbox{signture@list}{\hrulefill}\\
+       \eqparbox{signture@list}{%
+        \ \csname CoppeExaminerTitle:\the\count1 \endcsname
+        \ \csname CoppeExaminerName:\the\count1 \endcsname,
+        \ \csname CoppeExaminerSurname:\the\count1 \endcsname
+        }\\
+           \advance\count1 by 1}
+  \end{flushright}
+     \end{center}
+  \vspace*{\fill}
+  \frontpage@bottomtext}
+
+%%%%%%%%%
+%\newcommand\makefrontpage{%
+%  \begin{center}
+%    \sloppy\nohyphens{\MakeUppercase\local@title}\par
+%    \vspace*{7mm}
+%    {\@authname\ \@authsurn}\par
+%  \end{center}\par
+%  \vspace*{4mm}
+%  \frontpage@maintext
+%  \vspace*{8mm}
+%  \noindent\local@approvedname:\par
+%     \begin{center}
+%  \begin{flushright}
+%        \count1=0
+%        \@whilenum \count1<\@examiner \do {
+%            \vskip26\p@ \baselineskip12pt
+%        \eqparbox{signture@list}{\hrulefill}\\
+%        \eqparbox{signture@list}{\protect\centering%
+%            \ \ \ \csname CoppeExaminer:\the\count1 \endcsname\ \ \ }\\
+%            \advance\count1 by 1}
+%  \end{flushright}
+%     \end{center}
+%  \vspace*{\fill}
+%  \frontpage@bottomtext}
+%%%%%%%%%
+
+
 \renewcommand\maketitle{%
   \pagenumbering{alph}
-  \ltx@ifpackageloaded{hyperref}{\coppe@hypersetup}{}%
+  \config@hypersetup
   \begin{titlepage}
   \begin{flushleft}
   \vspace*{1.5mm}
@@ -258,30 +412,108 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \end{titlepage}
   \global\let\maketitle\relax%
   \global\let\and\relax}
-\newcommand\makefrontpage{%
-  \begin{center}
-    \sloppy\nohyphens{\MakeUppercase\local@title}\par
-    \vspace*{7mm}
-    {\@authname\ \@authsurn}\par
-  \end{center}\par
+
+
+%\renewcommand\maketitle{%
+%\pagenumbering{alph}
+%\config@hypersetup
+%  \begin{titlepage}
+%  \begin{center}
+%  Universidade Federal do Rio de Janeiro\par
+%  \vspace*{5mm}
+%  Escola Polit{\' e}cnica/COPPE\par
+%  \vspace*{20mm}
+%  \nohyphens{\large\textbf{\MakeUppercase\local@title}}\par
+%  %\vspace*{28mm}
+%  \vspace*{10mm}
+%  \vspace*{\fill}
+%  \end{center}
+%  %\nohyphens{Autor: \@authname\ \@authsurn}\par
+%  %Autor:\par
+%  \begin{flushright}
+%	\begin{flushleft}
+%	\noindent Autor:\par
+%	\end{flushleft}
+%	%\vskip26\p@ \baselineskip12pt
+%        \eqparbox{signture@list}{\hrulefill}\\
+%        \eqparbox{signture@list}{\protect\centering%
+%            \ \ \ \nohyphens{\@authname\ \@authsurn}\ \ \ }\\
+%  \end{flushright}
+%  %\end{center}
+%  %\vspace*{16mm}
+%  %\begin{flushright}
+%  \vspace*{7.5mm}
+%  \nohyphens{%
+%}\par
+%
+%     %\begin{center}
+%  %\noindent\local@advisorstring:\par
+%  \begin{flushright}
+%        \count1=0
+%        \@whilenum \count1<\@advisor \do {
+%		\begin{flushleft}
+%		\noindent Orientador:\par
+%		\end{flushleft}
+%            %\vskip26\p@ \baselineskip12pt
+%        \eqparbox{signture@list}{\hrulefill}\\
+%        \eqparbox{signture@list}{\protect\centering%
+%            \ \ \ \csname CoppeAdvisorTitle:\the\count1%
+%        \expandafter\endcsname\expandafter\space%
+%        \csname CoppeAdvisorName:\the\count1%
+%        \expandafter\endcsname\expandafter\space%
+%        \csname CoppeAdvisorSurname:\the\count1%
+%        \expandafter\endcsname\expandafter,\expandafter\space%
+%        \csname CoppeAdvisorDegree:\the\count1%
+%      	\endcsname\ \ \ }\\
+%            \advance\count1 by 1}
+%
+%  \end{flushright}
+%    % \end{center}
+%%%
+%\vspace*{7.5mm}
+%%\begin{center}
+%  %\noindent\local@approvedname:\par
+%
+%  \begin{flushright}
+%        \count1=0
+%        \@whilenum \count1<\@examiner \do {
+%		\begin{flushleft}
+%		\noindent Examinador:\par
+%		\end{flushleft}
+%            %\vskip26\p@ \baselineskip12pt
+%        \eqparbox{signture@list}{\hrulefill}\\
+%        \eqparbox{signture@list}{\protect\centering%
+%            \ \ \ \csname CoppeExaminer:\the\count1 \endcsname\ \ \ }\\
+%            \advance\count1 by 1}
+%  \end{flushright}
+%     %\end{center}
+%%%
+%
+%  %\end{flushright}
+%  \vspace*{\fill}
+%  \begin{center}
+%  %\local@cityname\par
+%  Poli/COPPE\par
+%  \local@monthname\ de \number\year
+%  \end{center}
+%  \end{titlepage}
+%  \global\let\maketitle\relax%
+%  \global\let\and\relax}
+
+%%%%%%%%%
+%ADDED
+\newcommand\makedisclaimerpage{%
   \vspace*{4mm}
-  \frontpage@maintext
+  \doublespacing
+  \disclaimerpage@toptext
   \vspace*{8mm}
-  \noindent\local@approvedname:\par
-     \begin{center}
-  \begin{flushright}
-        \count1=0
-        \@whilenum \count1<\@examiner \do {
-            \vskip26\p@ \baselineskip12pt
-        \eqmakebox[signture@list][c]{\hrulefill}\\
-        \eqmakebox[signture@list][c]{%
-            \ \ \ \protect\csname CoppeExaminer:\the\count1 \endcsname\ \ \ }\\
-            \advance\count1 by 1}
-  \end{flushright}
-     \end{center}
-  \vspace*{\fill}
-  \frontpage@bottomtext}
-\newcommand\coppe@hypersetup{%
+  \vspace*{4mm}
+  \onehalfspacing
+  \disclaimerpage@maintext
+  \vspace*{8mm}
+}
+%%%%%%%%%
+\newcommand\config@hypersetup{%
 \begingroup
   % changes to \toks@ and \count@ are kept local;
   % it's not necessary for them, but it is usually the case
@@ -314,7 +546,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \hypersetup{%
   pdfauthor={\@authname\ \@authsurn},
   pdftitle={\local@title},
-  pdfsubject={\local@doctype\ de \@degreename\ em \local@deptname\ da COPPE/UFRJ},
+  pdfsubject={\local@doctype\ de \@degreename\ em \local@deptname\ da UFRJ/POLI -- COPPE},
   pdfcreator={LaTeX with CoppeTeX toolkit},
   breaklinks={true},
   raiselinks={true},
@@ -330,7 +562,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       \noindent\sloppy\nohyphens\@authsurn,
       \nohyphens\@authname\par
       \nohyphens{\local@title/\@authname\ \@authsurn. -- \local@cityname:
-      UFRJ/COPPE, \number\year.}\par
+      UFRJ/POLI -- COPPE, \number\year.}\par
       \pageref{front:pageno},
       \pageref{LastPage}
       p.\@ifundefined{r@cat:lofflag}{}{\pageref{cat:lofflag}} $29,7$cm.\par
@@ -339,7 +571,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       % Should we manually introduce a fixed space? But how could we know that
       % a name was split? Is this happening yet?
       \nohyphens{%
-      \begin{tabularx}{100mm}[b]{@{}l@{ }>{\raggedright\arraybackslash}X@{}}
+      \begin{tabularx}{100mm}[b]{@{}l@{ }X@{}}
         \local@advisorstring: &
         \count1=0
         \toks@={}
@@ -359,8 +591,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
         \advance\count1 by 1}
         \the\toks@
       \end{tabularx}}\par
-      \nohyphens{\local@doctype\ ({\MakeLowercase\@degreename}) --
-      UFRJ/COPPE/Programa de \local@deptname, \number\year.}\par
+      %\nohyphens{\local@doctype\ ({\MakeLowercase\@degreename}) --
+      \nohyphens{Projeto ({\MakeLowercase\@degreename}) --
+      UFRJ/ Escola Polit{\'e}cnica/ Curso de Computa{\c c}{\~ a}o e Informa{\c c}{\~ a}o, \number\year.}\par
       \bibname: p. \pageref{bib:begin} -- \pageref{bib:end}.\par
       \count1=0
       \count2=1
@@ -371,7 +604,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       I. \csname CoppeAdvisorSurname:0\endcsname,%
       \ \csname CoppeAdvisorName:0\endcsname%
       \ifthenelse{\@advisor>1}{\ \emph{et~al.}{}}.
-      II. \local@universityname, COPPE, Programa de \local@deptname.
+      II. \local@universityname, Escola Polit{\'e}cnica/ Curso de Computa{\c c}{\~ a}o e Informa{\c c}{\~ a}o.
       III. T{\' i}tulo.}
     \end{minipage}}
   \end{center}
@@ -392,15 +625,15 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \abstract@toptext\par
   \vspace*{8.6mm}
   \begin{center}
-    \sloppy\nohyphens{\MakeUppercase\local@title}\par
+    \sloppy\nohyphens{\textbf{\MakeUppercase\local@title}}\par
     \vspace*{13.2mm}
-    \@authname\ \@authsurn \par
+    \textbf{ \@authname\ \@authsurn }\par
     \vspace*{7mm}
     \local@monthname/\number\year
   \end{center}\par
   \vspace*{\fill}
   \noindent%
-  \begin{tabularx}{\textwidth}[b]{@{}l@{ }>{\raggedright\arraybackslash}X@{}}
+  \begin{tabularx}{\textwidth}[b]{@{}l@{ }X@{}}
     \local@advisorstring: &
     \count1=0
     \toks@={}
@@ -421,8 +654,34 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \the\toks@
   \end{tabularx}\par
   \vspace*{2mm}
-  \noindent\local@deptstring: \local@deptname\par
-  \vspace*{7mm}}{\vspace*{\fill}}
+  %\noindent\local@deptstring: \local@deptname\par
+  \noindent\local@deptstring: Engenharia de Computa{\c c}{\~ a}o e Informa{\c c}{\~ a}o
+  \vspace*{7mm}}{\vspace*{\fill}
+%%%%%%%%%%%%%%
+  \textbf{Palavras-Chave:}
+  \toks@={}% in this special case not necessary
+  \count@=0 %
+  \@whilenum\count@<\value{keywords}\do{%
+    % * a keyword separator is not necessary,
+    %    if there is just one keyword
+    % * \csname CoppeKeyword:\the\count@\endcsname must be expanded
+    %    at least once, to get rid of the loop depended \count@
+    \ifcase\count@ % same as \ifnum0=\count@
+      \toks@=\expandafter{\csname CoppeKeyword:\the\count@\endcsname}%
+    \else
+      \toks@=\expandafter\expandafter\expandafter{%
+        \expandafter\the\expandafter\toks@
+        \expandafter,\expandafter\space
+        \csname CoppeKeyword:\the\count@\endcsname
+      }%
+    \fi
+    \advance\count@ by 1 %
+  }%
+  \the\toks@.
+  \vspace*{\fill}
+%%%%%%%%%%%%%%
+}
+
 \newenvironment{foreignabstract}{%
   \clearpage
   \thispagestyle{plain}
@@ -430,15 +689,15 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \foreignabstract@toptext\par
   \vspace*{8.6mm}
   \begin{center}
-    \sloppy\nohyphens{\MakeUppercase\foreign@title}\par
+    \sloppy\nohyphens{\textbf{\MakeUppercase\foreign@title}}\par
     \vspace*{13.2mm}
-    \@authname\ \@authsurn \par
+    \textbf{ \@authname\ \@authsurn }\par
     \vspace*{7mm}
     \foreign@monthname/\number\year
   \end{center}\par
   \vspace*{\fill}
   \noindent%
-  \begin{tabularx}{\textwidth}[b]{@{}l@{ }>{\raggedright\arraybackslash}X@{}}
+  \begin{tabularx}{\textwidth}[b]{@{}l@{ }X@{}}
     \foreign@advisorstring: &
     \count1=0
     \toks@={}
@@ -459,10 +718,36 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \the\toks@
   \end{tabularx}\par
   \vspace*{2mm}
-  \noindent\foreign@deptstring: \foreign@deptname\par
+  %\noindent\foreign@deptstring: \foreign@deptname\par
+  \noindent\foreign@deptstring: Computer and Information Engineering
   \vspace*{7mm}}{%
   \end{otherlanguage}
   \vspace*{\fill}
+
+%%%%%%%%%%%%%%
+  \textbf{Keywords:}
+  \toks@={}% in this special case not necessary
+  \count@=0 %
+  \@whilenum\count@<\value{foreignkeywords}\do{%
+    % * a keyword separator is not necessary,
+    %    if there is just one keyword
+    % * \csname CoppeKeyword:\the\count@\endcsname must be expanded
+    %    at least once, to get rid of the loop depended \count@
+    \ifcase\count@ % same as \ifnum0=\count@
+      \toks@=\expandafter{\csname ForeignKeyword:\the\count@\endcsname}%
+    \else
+      \toks@=\expandafter\expandafter\expandafter{%
+        \expandafter\the\expandafter\toks@
+        \expandafter,\expandafter\space
+        \csname ForeignKeyword:\the\count@\endcsname
+      }%
+    \fi
+    \advance\count@ by 1 %
+  }%
+  \the\toks@.
+\vspace*{\fill}
+%%%%%%%%%%%%%%
+
   \global\let\@author\@empty
   \global\let\@date\@empty
   \global\let\foreign@title\@empty
@@ -473,7 +758,8 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \global\let\author\relax
   \global\let\date\relax}
 \renewcommand\listoffigures{%
-    \coppe@hasLof
+  \immediate\write\@auxout{%
+  \string\newlabel{cat:lofflag}{{}{:~il.;}{}{page.\roman{page}}{}}}
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else
@@ -550,42 +836,13 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       {\string\indexentry{[#1] #2}{\arabic{page}}}%
     \endgroup
     \@esphack}}}
-\AtBeginDocument{%
-  \ltx@ifpackageloaded{hyperref}{
-    \def\coppe@bibEnd{%
-      \immediate\write\@auxout{%
-        \string\newlabel{bib:end}{{}{\arabic{page}}{}{page.\arabic{page}}{}}}}%
-    \def\coppe@bibBegin{%
-      \immediate\write\@auxout{%
-        \string\newlabel{bib:begin}{{}{\arabic{page}}{}{page.\arabic{page}}{}}}}%
-    \def\coppe@mainBegin{%
-      \immediate\write\@auxout{%
-        \string\newlabel{front:pageno}{{}{\Roman{page}}{}{page.\roman{page}}{}}}}%
-    \def\coppe@hasLof{%
-      \immediate\write\@auxout{%
-        \string\newlabel{cat:lofflag}{{}{:~il.;}{}{page.\roman{page}}{}}}}%
-  }{%
-    \def\coppe@bibEnd{%
-      \immediate\write\@auxout{%
-      \string\newlabel{bib:end}{{}{\arabic{page}}{}}}}%
-    \def\coppe@bibBegin{%
-      \immediate\write\@auxout{%
-      \string\newlabel{bib:begin}{{}{\arabic{page}}{}}}}%
-    \def\coppe@mainBegin{%
-      \immediate\write\@auxout{%
-        \string\newlabel{front:pageno}{{}{\Roman{page}}{}}}}%
-    \def\coppe@hasLof{%
-      \immediate\write\@auxout{%
-        \string\newlabel{cat:lofflag}{{}{:~il.;}{}}}}%
-  }%
-}
 \newdimen\bibindent%
 \setlength\bibindent{1.5em}%
 \renewenvironment{thebibliography}[1]%
-     {\onehalfspacing%
-      \chapter*{\bibname}%
+     {\chapter*{\bibname}%
       \addcontentsline{toc}{chapter}{\bibname}%
-      \coppe@bibBegin
+      \immediate\write\@auxout{%
+      \string\newlabel{bib:begin}{{}{\arabic{page}}{}{page.\arabic{page}}{}}}%
       \list{\@biblabel{\@arabic\c@enumiv}}%
            {\setlength{\labelwidth}{0ex}%
             \setlength{\leftmargin}{9.0ex}%
@@ -602,7 +859,8 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       \sfcode`\.\@m}%
      {\def\@noitemerr%
        {\@latex@warning{Empty `thebibliography' environment}}%
-       \coppe@bibEnd
+      \immediate\write\@auxout{%
+      \string\newlabel{bib:end}{{}{\arabic{page}}{}{page.\arabic{page}}{}}}%
       \endlist}
 \newenvironment{theglossary}{%
   \if@twocolumn%
@@ -645,33 +903,36 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\local@advisorstring{Orientador}
 \newcommand\foreign@advisorstring{Advisor}
 \ifthenelse{\boolean{maledoc}}{%
-  \newcommand\local@approvedname{Examinado por}%
+  \newcommand\local@approvedname{Examinadores}%
 }{%
-  \newcommand\local@approvedname{Examinada por}%
+  \newcommand\local@approvedname{Examinadores}%
 }
 \newcommand\local@universityname{Universidade Federal do Rio de Janeiro}
-\newcommand\local@deptstring{Programa}
-\newcommand\foreign@deptstring{Department}
+\newcommand\local@deptstring{Curso}
+\newcommand\foreign@deptstring{Course}
 \newcommand\local@cityname{Rio de Janeiro}
 \newcommand\local@statename{RJ}
 \newcommand\local@countryname{Brasil}
+%TODO
 \newcommand\frontcover@maintext{
   \sloppy\nohyphens{\local@doctype\ de \@degreename\
   \ifthenelse{\boolean{maledoc}}{apresentado}{apresentada}
-  ao Programa de P{\' o}s-gradua{\c c}{\~ a}o em \local@deptname,
-  COPPE, da \local@universityname, como parte dos requisitos
-  necess{\' a}rios {\` a} obten{\c c}{\~ a}o do t{\' i}tulo de
-  \local@degname\ em \local@deptname.}
+  ao Curso de Computa{\c c}{\~ a}o e Informa{\c c}{\~ a}o da
+  Escola Polit{\' e}cnica da Universidade Federal do Rio de
+  Janeiro como parte dos requisitos necess{\' a}rios para a
+  obten{\c c}{\~ a}o do grau de \local@degname\ de
+  Computa{\c c}{\~ a}o e Informa{\c c}{\~ a}o.}
 }
+%%%%%%%%%%%
+%CHANGED
 \newcommand\frontpage@maintext{
   \noindent {\MakeUppercase\local@doctype}
   \ifthenelse{\boolean{maledoc}}{SUBMETIDO}{SUBMETIDA}
-  \sloppy\nohyphens{AO CORPO DOCENTE DO INSTITUTO ALBERTO LUIZ COIMBRA
-  DE P{\' O}S-GRADUA{\c C}{\~ A}O E PESQUISA DE ENGENHARIA (COPPE) DA
-  UNIVERSIDADE FEDERAL DO RIO DE JANEIRO COMO PARTE DOS REQUISITOS
-  NECESS{\' A}RIOS PARA A OBTEN{\c C}{\~ A}O DO GRAU DE
-  {\MakeUppercase\local@degname} EM CI{\^E}NCIAS EM
-  {\MakeUppercase\local@deptname.\par}}%
+  \sloppy\nohyphens{AO CORPO DOCENTE DO CURSO DE
+  COMPUTA{\c C}{\~ A}O E INFORMA{\c C}{\~ A}O DA ESCOLA POLIT{\' E}CNICA DA
+  UNIVERSIDADE FEDERAL DO RIO DE JANEIRO COMO PARTE DOS REQUISITOS NECESS{\' A}RIOS PARA A
+  OBTEN{\c C}{\~ A}O DO GRAU DE {\MakeUppercase\local@degname} DE
+  COMPUTA{\c C}{\~ A}O E INFORMA{\c C}{\~ A}O.\par}%
 }
 \newcommand\frontpage@bottomtext{%
   \begin{center}
@@ -679,17 +940,39 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   {\MakeUppercase\local@monthname\ DE \number\year}
   \end{center}%
 }
+%%%%%%%%%%%
+%ADDED
+\newcommand\disclaimerpage@toptext{
+  \noindent UNIVERSIDADE FEDERAL DO RIO DE JANEIRO
+
+  \noindent Escola Polit{\' e}cnica - Departamento de Eletr{\^ o}nica e Computa{\c c}{\~ a}o
+
+  \noindent Centro de Tecnologia, bloco H, sala H-217, Cidade Universit{\' a}ria
+
+  \noindent Rio de Janeiro - RJ CEP 21949-900
+
+}
+\newcommand\disclaimerpage@maintext{
+Este exemplar {\' e} de propriedade da Universidade Federal do Rio de Janeiro, que poder{\' a} inclu{\' i}-lo em base de dados, armazenar em computador, microfilmar ou adotar qualquer forma de arquivamento.
+
+{\' E} permitida a men{\c c}{\~ a}o, reprodu{\c c}{\~ a}o parcial ou integral e a transmiss{\~ a}o entre bibliotecas deste trabalho, sem modifica{\c c}{\~ a}o de seu texto, em qualquer meio que esteja ou venha a ser fixado, para pesquisa acad{\^ e}mica, coment{\' a}rios e cita{\c c}{\~ o}es, desde que sem finalidade comercial e que seja feita a refer{\^ e}ncia bibliogr{\' a}fica completa.
+
+Os conceitos expressos neste trabalho s{\~ a}o de responsabilidade do(s) autor(es) e
+do(s) orientador(es).
+}
+%%%%%%%%%%%
+
 \newcommand\abstract@toptext{%
   \noindent Resumo \ifthenelse{\boolean{maledoc}}{do}{da}
-  \local@doctype\ \ifthenelse{\boolean{maledoc}}{apresentado}{apresentada}
-  \sloppy\nohyphens{{\` a} COPPE/UFRJ como parte dos requisitos
+  \local@doctype\ de \@degreename\  \ifthenelse{\boolean{maledoc}}{apresentado}{apresentada}
+  \sloppy\nohyphens{{\` a} Escola Polit{\' e}cnica/COPPE/UFRJ como parte dos requisitos
   necess{\' a}rios para a obten{\c c}{\~ a}o do grau de
-  \local@degname\ em Ci{\^ e}ncias (\@degree)}
+  \local@degname\ de Computa{\c c}{\~ a}o e Informa{\c c}{\~ a}o.}
 }
 \newcommand\foreignabstract@toptext{%
-  \noindent \sloppy\nohyphens{Abstract of \foreign@doctype\ presented to
-  COPPE/UFRJ as a partial fulfillment of the requirements for the
-  degree of \foreign@degname\ of Science (\@degree)}
+  \noindent \sloppy\nohyphens{Abstract of the \foreign@doctype\ presented to
+  Poli/COPPE/UFRJ as a partial fulfillment of the requirements for the
+  degree of Computer and Information \foreign@degname\@.}
 }
 %% 
 %%

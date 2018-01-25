@@ -1,25 +1,18 @@
 This is BibTeX, Version 0.99d (TeX Live 2017)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: TCC_main.aux
+A level-1 auxiliary file: chapter01.aux
 The style file: coppe-unsrt.bst
 I couldn't open database file example.bib
----line 72 of file TCC_main.aux
+---line 30 of file TCC_main.aux
  : \bibdata{example
  :                 }
 I'm skipping whatever remains of this command
+I found no \citation commands---while reading file TCC_main.aux
 I found no database files---while reading file TCC_main.aux
-Warning--I didn't find a database entry for "book-example"
-Warning--I didn't find a database entry for "article-example"
-Warning--I didn't find a database entry for "techreport-example"
-Warning--I didn't find a database entry for "techreport-exampleIn"
-Warning--I didn't find a database entry for "inproceedings-example"
-Warning--I didn't find a database entry for "incollection-example"
-Warning--I didn't find a database entry for "inbook-example"
-Warning--I didn't find a database entry for "mastersthesis-example"
-Warning--I didn't find a database entry for "phdthesis-example"
 You've used 0 entries,
             2630 wiz_defined-function locations,
-            555 strings with 4113 characters,
+            546 strings with 3948 characters,
 and the built_in function-call counts, 36 in all, are:
 = -- 0
 > -- 0
@@ -58,4 +51,4 @@ warning$ -- 0
 while$ -- 0
 width$ -- 0
 write$ -- 8
-(There were 2 error messages)
+(There were 3 error messages)
