@@ -1,0 +1,40 @@
+\chapter{Interfaces}
+
+\section{Android}
+\subsection{Activities}
+A plataforma Android oferece algumas opções de criação de interfaces telas. A principal maneira de 
+fazê-lo é utilizando uma classe Activity. A classe Activity é responsável por carregar uma user interface 
+(UI) que basicamente é um arquivo XML de layout que fica guardado no diretório /res/layout.
+
+No exemplo a seguir, modificado do projeto RestauranteUniversitário, a classe MainActivity herda da classe
+AppCompactActivity (um tipo de Activity fornecido pelo Android), e carrega a user interface activity\_main.
+
+
+\lstset{language=Java}
+
+\begin{lstlisting}
+// MainActivity.java
+
+package br.ufrj.ct.restauranteuniversitario;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //set the layout from the res/layout folder
+        setContentView(R.layout.activity_main);
+        
+     }
+}
+
+\end{lstlisting}
+
+Note que o método onCreate é chamado quando a Activity é criada. Na verdade, existe 
+todo um ciclo de vida que define o comportamento de uma Activity dada a interação dela com o usuário.
+
+
