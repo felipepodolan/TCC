@@ -1,21 +1,21 @@
 # TCC
 
-This is the repository for my graduation final project written in LaTeX and using [CoppeTex](http://coppetex.sourceforge.net/index.html).
+This is the repository for my graduation final project written in ```TeX``` and using [CoppeTex](http://coppetex.sourceforge.net/index.html) standart as template.
 
-## Instalation
+## Prerequisites
 
-If you're in a Mac, you'll need [MacTex](http://www.tug.org/mactex/) and a LaTeX editor of your preference.
+If you're in a Mac, download and install [MacTex](http://www.tug.org/mactex/).
 
-I recommend [TeXnicle](http://www.bobsoft-mac.de/texnicle/texnicledownload/texnicledownload.html).
+Windows and Linux have their own distributions of ```LaTeX```.
 
-You also will need [CoppeTex](http://coppetex.sourceforge.net/index.html).
+For Mac users, I recommend [TeXnicle](http://www.bobsoft-mac.de/texnicle/texnicledownload/texnicledownload.html) as a ```LaTeX``` editor.
 
-## Runing
+## Running
 
-Clone the project
+Clone the project:
 
 ```bash
 $ git clone https://github.com/felipepodolan/TCC
 ```
 
-Import the project in your editor and run.
+Import the project in your prefered ```LaTeX``` editor and run it. It should produce the final pdf.
