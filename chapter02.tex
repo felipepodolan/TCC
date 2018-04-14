@@ -1,13 +1,15 @@
-\chapter{Interfaces}
+\chapter{Interface Gráfica (UI)}
 
 \section{Android}
 \subsection{Activities}
 A plataforma Android oferece algumas opções de criação de interfaces telas. A principal maneira de 
-fazê-lo é utilizando uma classe Activity. A classe Activity é responsável por carregar uma user interface 
-(UI) que basicamente é um arquivo XML de layout que fica guardado no diretório /res/layout.
+fazê-lo é utilizando uma classe nativa chamada Activity. A classe Activity é responsável por carregar uma 
+user interface (UI) é definida através de um arquivo XML de layout usualmente guardado no diretório 
+/res/layout do projeto.
 
 No exemplo a seguir, modificado do projeto RestauranteUniversitário, a classe MainActivity herda da classe
-AppCompactActivity (um tipo de Activity fornecido pelo Android), e carrega a user interface activity\_main.
+AppCompactActivity (um dos tipos de Activity fornecidas pelo Android), e carrega a user interface 
+activity\_main.
 
 
 \lstset{language=Java}
@@ -34,7 +36,16 @@ public class MainActivity extends AppCompatActivity {
 
 \end{lstlisting}
 
-Note que o método onCreate é chamado quando a Activity é criada. Na verdade, existe 
-todo um ciclo de vida que define o comportamento de uma Activity dada a interação dela com o usuário.
+Note que o método onCreate é chamado quando a Activity é criada. Ainda mais, existe 
+todo um ciclo de vida que define o comportamento de uma Activity dada a interação dela com o 
+usuário, conforme mostrado na figura a seguir.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{images/android_activity_lifecycle}
+    \caption[Exemplo de detecção das trilhas de transformações]
+    {Ciclo de vida de uma Activity do Android.}%
+    \label{fig:android_activity_lifecycle}
+\end{figure}
 
 
