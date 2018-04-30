@@ -1,0 +1,12 @@
+% Encoding: UTF-8
+
+@Article{Chong2004,
+  author        = {Chong, Peter Han Joo and So, Ping Lam and Shum, P and Li, Xue Jun and Goyal, D},
+  title         = {Design and implementation of user interface for mobile devices},
+  journal       = {IEEE Transactions on Consumer Electronics},
+  year          = {2004},
+  volume        = {50},
+  number        = {4},
+  pages         = {1156--1161},
+  publisher     = {IEEE},
+}

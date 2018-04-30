@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.24)  14 APR 2018 18:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.24)  29 APR 2018 21:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -8,11 +8,8 @@ entering extended mode
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
 (./coppetex/coppe.cls
-
-LaTeX Warning: You have requested document class `coppetex/coppe',
-               but the document class provides `coppe'.
-
-Document Class: coppe 2009/11/17\ v2.1.1\ COPPE Dissertations and Thesis
+Document Class: coppetex/coppe 2009/11/17\ v2.1.1\ COPPE Dissertations and Thes
+is
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/bk12.clo
@@ -700,7 +697,7 @@ Writing index of symbols file TCC_main.syx
 \openout4 = `TCC_main.abx'.
 
 Writing index of abbreviations file TCC_main.abx
-(./TCC_main.aux (./acknowledgements.aux) (./chapter01.aux) (./chapter02.aux))
+(./TCC_main.aux (./chapter01.aux) (./chapter02.aux))
 \openout1 = `TCC_main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
@@ -805,26 +802,34 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count136
-Package hyperref Info: Option `breaklinks' set `true' on input line 51.
-Package hyperref Info: Option `raiselinks' set `true' on input line 51.
-Package hyperref Info: Option `pageanchor' set `true' on input line 51.
-<coppetex/escola-politecnica.png, id=36, 150.5625pt x 142.5325pt>
+Package hyperref Info: Option `breaklinks' set `true' on input line 49.
+Package hyperref Info: Option `raiselinks' set `true' on input line 49.
+Package hyperref Info: Option `pageanchor' set `true' on input line 49.
+<coppetex/escola-politecnica.png, id=56, 150.5625pt x 142.5325pt>
 File: coppetex/escola-politecnica.png Graphic file (type png)
 
 <use coppetex/escola-politecnica.png>
-Package pdftex.def Info: coppetex/escola-politecnica.png used on input line 51.
+Package pdftex.def Info: coppetex/escola-politecnica.png used on input line 49.
 
 (pdftex.def)             Requested size: 150.56212pt x 142.53214pt.
 
-Underfull \hbox (badness 5189) in paragraph at lines 51--51
-\OT1/cmr/m/n/12 de Computa^^Xc~ao e Informa^^Xc~ao da Escola
+./TCC_main.tex:49: Extra \fi.
+\maketitle ... {coppetex/escola-politecnica}} \fi 
+                                                  \end {flushleft} \vspace {...
+l.49   \maketitle
+                 
+I'm ignoring this; it doesn't match any \if.
+
+
+Underfull \hbox (badness 3884) in paragraph at lines 49--49
+\OT1/cmr/m/n/12 necess^^Sarios para a obten^^Xc~ao do grau de
  []
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 51.
+LaTeX Font Info:    Try loading font information for U+msa on input line 49.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 51.
+LaTeX Font Info:    Try loading font information for U+msb on input line 49.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -833,131 +838,84 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./coppe
 tex/escola-politecnica.png>]
-\openout2 = `acknowledgements.aux'.
-
- (./acknowledgements.texpdfTeX warning (ext4): destination with the same identi
-fier (name{page.a}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.3 \chapter
-            *{Agradecimentos} [1
-
-
-]) [2
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 55--55
+Underfull \hbox (badness 10000) in paragraph at lines 53--53
 \OT1/cmr/m/n/12 PROJETO SUB-ME-TIDO []AO CORPO DOCENTE DO CURSO DE
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--55
-\OT1/cmr/m/n/12 COMPUTA[][]AO E INFORMA[][]AO DA ESCOLA POLIT[]ECNICA DA
+Underfull \hbox (badness 10000) in paragraph at lines 53--53
+\OT1/cmr/m/n/12 ENGENHARIA DE COMPUTA[][]AO E INFORMA[][]AO DA ESCOLA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--55
-\OT1/cmr/m/n/12 UNIVERSIDADE FEDERAL DO RIO DE JANEIRO COMO PARTE
+Underfull \hbox (badness 2050) in paragraph at lines 53--53
+\OT1/cmr/m/n/12 POLIT[]ECNICA DA UNIVERSIDADE FEDERAL DO RIO DE JANEIRO
  []
 
 [2
 
-
-]
-Underfull \hbox (badness 1320) in paragraph at lines 55--55
-\OT1/cmr/m/n/12 o Restaurante Universit^^Sario da UFRJ/Felipe Podolan
- []
-
-[3
+] [3
 
 
 ] (./TCC_main.toc)
 \tf@toc=\write6
 \openout6 = `TCC_main.toc'.
 
- [4
-
-] (./TCC_main.lof)
-\tf@lof=\write7
-\openout7 = `TCC_main.lof'.
-
- [5
-
-] (./TCC_main.lot)
-\tf@lot=\write8
-\openout8 = `TCC_main.lot'.
-
 
 No file TCC_main.los.
 No file TCC_main.lab.
-[6
+[4
 
 ]
 \openout2 = `chapter01.aux'.
 
  (./chapter01.tex
 Cap\'{\i }tulo 1.
-) [1
+[1
 
 
 
-]
+] [2]) [3] [4]
 \openout2 = `chapter02.aux'.
 
  (./chapter02.tex
 Cap\'{\i }tulo 2.
-[2
+) [5
 
 
 
-] <images/android_activity_lifecycle.png, id=119, 353.32pt x 424.58624pt>
-File: images/android_activity_lifecycle.png Graphic file (type png)
-
-<use images/android_activity_lifecycle.png>
-Package pdftex.def Info: images/android_activity_lifecycle.png used on input li
-ne 45.
-(pdftex.def)             Requested size: 426.79135pt x 512.8828pt.
-) [3 <./images/android_activity_lifecycle.png>] (./TCC_main.bbl
-
-LaTeX Warning: Empty `thebibliography' environment on input line 9.
-
-) [4
-
-
-
-]
-Ap\^endice A.
-
+] (./TCC_main.bbl) 
 AED: lastpage setting LastPage
-[5
+[6
+
+
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 72.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 72.
- (./TCC_main.aux (./acknowledgements.aux) (./chapter01.aux) (./chapter02.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 72.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 72.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 70.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 70.
+ (./TCC_main.aux (./chapter01.aux) (./chapter02.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 70.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 70.
 Package rerunfilecheck Info: File `TCC_main.out' has not changed.
-(rerunfilecheck)             Checksum: F2BD660A8D559C91F878F61BA404B2A1;464.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 72.
+(rerunfilecheck)             Checksum: AAFF453BCF239B42493A44BEB6A0BBB9;784.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 70.
  ) 
 Here is how much of TeX's memory you used:
- 9787 strings out of 492995
- 135874 string characters out of 6132704
- 276256 words of memory out of 5000000
- 13112 multiletter control sequences out of 15000+600000
- 11576 words of font info for 43 fonts, out of 8000000 for 9000
+ 9413 strings out of 492995
+ 132356 string characters out of 6132704
+ 270313 words of memory out of 5000000
+ 12771 multiletter control sequences out of 15000+600000
+ 10151 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 35i,11n,40p,431b,1905s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 35i,12n,40p,431b,361s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
-usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></u
-sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on ./TCC_main.pdf (13 pages, 179617 bytes).
+usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on ./TCC_main.pdf (10 pages, 100998 bytes).
 PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
- 142 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
- 75 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 150 PDF objects out of 1000 (max. 8388607)
+ 131 compressed objects within 2 object streams
+ 27 named destinations out of 1000 (max. 500000)
+ 110 words of extra memory for PDF output out of 10000 (max. 10000000)
 

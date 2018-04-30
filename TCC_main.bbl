@@ -1,9 +1,14 @@
-\begin{thebibliography}{0}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
-\newcommand{\enquote}[1]{``#1''}
+\begin{thebibliography}{1}
+
+\bibitem{Chong2004}
+Peter Han~Joo Chong, Ping~Lam So, P~Shum, Xue~Jun Li, and D~Goyal.
+\newblock Design and implementation of user interface for mobile devices.
+\newblock {\em IEEE Transactions on Consumer Electronics}, 50(4):1156--1161,
+  2004.
+
+\bibitem{Khalid2015}
+Hammad Khalid, Emad Shihab, Meiyappan Nagappan, and Ahmed~E Hassan.
+\newblock What do mobile app users complain about?
+\newblock {\em IEEE Software}, 32(3):70--77, 2015.
 
 \end{thebibliography}

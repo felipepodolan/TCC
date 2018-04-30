@@ -1,18 +1,121 @@
 \chapter{Introdução}
 
+\vspace{0.4cm}
+\section{Ênfase}
+
+Computação móvel.
+
+\vspace{0.4cm}
+\section{Tema}
+
+O tema deste trabalho é o desenvolvimento de aplicativos móveis. Neste sentido, os problemas a serem 
+resolvidos são a viabilidade em criar aplicações para plataformas móveis, 
+bem como,  a capacidade destas aplicações de ampliar a acessibilidade aos serviços 
+oferecidos e de melhorar a experiência de uso dos usuários.
+
+\vspace{0.4cm}
+\section{Delimitação}
+
+O objetivo do projeto é atender aos usuários e aos funcionários do Restaurante 
+Universitário do Centro de Tecnologia e de Letras da UFRJ. O escopo de usuários é variável sendo 
+composto pelos alunos, professores e servidores da instituição, bem como por eventuais visitantes que 
+vão à universidade para congressos, semanas esportivas, dentre outros. O projeto também tem 
+capacidade de atender às outras unidades do RU da UFRJ, bem como ser adaptado para outras 
+universidades.
+
+\vspace{0.4cm}
+\section{Justificativa}
+
 O Restaurante Universitário da UFRJ tem como objetivo oferecer alimentação de qualidade, equilibrada, e 
 acessível de forma a favorecer a permanência dos estudantes no espaço universitário, permitindo-lhes 
 dedicação integral aos estudos, sendo importante meio de combate à evasão escolar.
 
 Entretanto, apesar de ser benéfico à comunidade universitária, o RU enfrenta alguns problemas, sendo o 
 principal as filas de espera. Pensando nisso, a Decania do Centro de Tecnologia resolveu criar um sistema
- de agendamento online cujo objetivo é alocar os horários de entrada no RU.
+ de agendamento online cujo objetivo é alocar os horários de entrada no RU e, desta forma, tornar as 
+ filas, que antes eram físicas e que geravam desgaste aos alunos, em filas virtuais.
 
 Esse projeto funciona desde 2016 na unidade do RU do CT. Os agendamentos são feitos através do website
-www.ru.ct.ufrj.br. Entretanto, para melhorar ainda mais a experiência dos usuários, a Decania do CT 
-resolveu desenvolver aplicativos para smartphone tendo em vista a crescente popularização desta 
-plataforma, notoriamente para Android e para iOS.
+www.ru.ct.ufrj.br. Entretanto, para melhorar ainda mais a experiência dos usuários, bem 
+como para ampliar a acessibilidade aos serviços prestados pelo RU, a Decania do CT 
+resolveu desenvolver aplicativos nativos para smartphone tendo em vista a crescente popularização desta 
+modalidade, notoriamente para as plataformas Android e iOS.
 
-Desde então, deu-se inicio ao projeto de desenvolvimento de aplicativos nativos. Esta 
-monografia mostrará um comparativo entre essas duas ferramentas e utilizará como ilustração
-os aplicativos desenvolvidos para o Restaurante Universitário da UFRJ.
+\vspace{0.4cm}
+\section{Objetivo}
+
+O objetivo geral é, portanto, desenvolver aplicações móveis nativas em Android (Java) e em iOS (Swift) 
+capazes de fornecer os serviços virtuais do Restaurante Universitário, sendo o principal deles
+o agendamento de horários para entrar no restaurante. Desta forma, tem-se como objetivos específicos 
+principais: 
+\bigbreak
+(1) Permitir a criação, edição e exclusão de filas virtuais para o acesso ao RU por parte de seus funcionários; 
+\par(2) Permitir o agendamento em filas virtuais de acesso ao RU, bem como sua exclusão ou verificação de 
+status por parte dos alunos;
+\par(3) Visualização das filas virtuais vigêntes por parte de todos os usuários do RU.
+
+\vspace{0.4cm}
+\section{Metodologia}
+
+Este trabalho utilizou os kits de desenvolvimento de software (SDK, do inglês Software Development 
+Kit) oficiais oferecidos pela Google e pela Apple para suas plataformas Android e iOS, respectivamente.
+
+Atendendo às boas práticas de programação e aos conceitos de orientação a objetos,
+foram desenvolvidos três aplicativos móveis. São eles:
+\bigbreak
+(1) Aplicativo Android para clientes do RU;
+\par(2) Aplicativo iOS para clientes do RU;
+\par(3) Aplicativo Android para funcionários do RU.
+\bigbreak
+As etapas da criação de cada aplicação consistem em:
+\bigbreak
+(1) Criação de uma interface para cada funcionalidade;
+\par(2) Criação da lógica de interação com o usuário para alternar entre as 
+interfaces;
+\par(3) Criação de métodos para a comunicação com o Back-End;
+\par(4) Atualização dos dados exibidos na interface ou alternância de interface
+ de acordo com a resposta do Back-End.
+\bigbreak
+ A proposta deste trabalho é mostrar como cada etapa do projeto foi 
+ desenvolvida para os aplicativos para os clientes do RU, bem como um comparativo entre as 
+ plataformas Android e iOS neste desenvolvimento, utilizando os apps desenvolvidos como
+ exemplo. O aplicativo para os funcionários foi desenvolvido apenas para a 
+ plataforma Android e suas funcionalidades são mostradas apenas de maneira 
+ expositiva.
+ 
+ Além disso, são expostas as possíveis tecnologias a serem usadas para a 
+ comunicação com o Back-End, como por exemplo: os protocolos REST versus SOAP
+ e a transferência de dados via JSON versus XML. O desenvolvimento da camada de 
+ comunicação, entretanto, não faz parte do escopo deste projeto, pois a mesma já se encontrava 
+ desenvolvida.
+
+O êxito deste trabalho está centrado na entrega de todas as funcionalidades dos 
+aplicativos.
+
+\vspace{0.4cm}
+\section{Materiais}
+	
+Foi utilizado um notebook pessoal para o desenvolvimento do projeto. Trata-se 
+de um Macbook, pois é necessário para desenvolvimento nativo iOS e atende às demandas para 
+desenvolvimento Android.
+
+Os softwares utilizados são gratuítos. Para desenvolvimento iOS, foi utilizado o 
+software XCode, e para desenvolvimento Android, o software Android Studio.
+
+\vspace{0.4cm}
+\section{Descrição}
+Este trabalho é estruturado da seguinte forma:\\
+O capítulo 2 apresenta alguns conceitos iniciais como interface gráfica 
+(UI), experiência do usuário (UX) e API, discutindo algumas tecnologias da camada de 
+comunicação. Também apresenta as etapas de criação de um projeto em ambos os softwares Android 
+Studio e XCode e algumas boas práticas de programação, como o XML de Strings no Android, 
+e uma solução alternativa para o iOS.
+O capítulo 3, por sua vez, explica mais detalhadamente as interfaces gráficas (ou seja, as "telas")
+tanto para Android, quanto para iOS, mostrando suas diferenças e possíveis 
+formatos, com respaldo nos conceitos de Activity e de Fragment na plataforma Android e de 
+Controller na plataforma iOS. Também é aprofundada a discução sobre
+ experiência do usuário, mostrando os conceitos de Intent e FragmentManager para Android e de 
+ NavigationController e Segue para iOS.
+Já o capítulo 4 descreve a implementação dos aplicativos do RU explicando cada 
+componente do projeto bem como as decisões que foram tomadas ao longo de suas implementações.
+O último capítulo conclui o trabalho e discute possíveis trabalhos futuros.

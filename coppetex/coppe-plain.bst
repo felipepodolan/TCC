@@ -219,7 +219,7 @@ FUNCTION {format.names}
 		{
 		  numnames #3 >
 		    {
-			", " * "\MakeLowercase{et~al.}" * 
+			", " * "\MakeLowercase{et al.}" * 
 			#1 'namesleft :=
 		    }
 		    { ", " * t * }

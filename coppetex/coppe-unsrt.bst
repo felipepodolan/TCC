@@ -5,7 +5,7 @@
 % Numbered BibTeX style for using with CoppeTeX package.
 % It is Natbib compatible.
 %
-% Copyright (C) 2011 CoppeTeX Project and any individual authors listed
+% Copyright (C) 2009 CoppeTeX Project and any individual authors listed
 % elsewhere in this file.
 %
 % This program is free software; you can redistribute it and/or modify
@@ -21,11 +21,13 @@
 % version 3 along with this package (see COPYING file).
 % If not, see <http://www.gnu.org/licenses/>.
 %
-% $URL: https://svn.code.sf.net/p/coppetex/code/trunk/coppe-unsrt.bst $
-% $Id: coppe-unsrt.bst 276 2011-02-05 00:14:45Z helano $
+% $URL: https://coppetex.svn.sourceforge.net/svnroot/coppetex/tags/coppetex-2.1.1/coppe-unsrt.bst $
+% $Id: coppe-unsrt.bst,v 1.2 2011/02/15 21:12:24 coutinho Exp $
 %
-% Author(s): Vicente H. F. Batista
+% Author(s): Vicente Helano <helano@coc.ufrj.br>
 %
+% TODO:
+%   1. Verify the use of cross-references.
 
 ENTRY
   { address
@@ -279,7 +281,7 @@ FUNCTION {format.issn}
 FUNCTION {format.url}
 { url empty$
     { "" }
-    { new.block "Dispon{\' i}vel em: \textless\url{" url * "}\textgreater " * }
+    { new.block "Dispon{\' i}vel em: <\url{" url * "}>" * }
   if$
 }
 
@@ -808,7 +810,6 @@ FUNCTION {booklet}
   author format.key output
   new.block
   format.intitle "title" output.check
-  end.quote.title
   howpublished address new.block.checkb
   howpublished output
   address output
@@ -979,7 +980,6 @@ FUNCTION {misc}
   author format.key output
   title howpublished new.block.checkb
   format.intitle output
-  end.quote.title
   howpublished new.block.checka
   howpublished output
   format.date output
@@ -1056,7 +1056,7 @@ FUNCTION {unpublished}
   author format.key output
   new.block
   format.title "title" output.check
-  end.quote.title
+  new.block
   note "note" output.check
   format.date output
   format.url output

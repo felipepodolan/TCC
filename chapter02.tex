@@ -1,51 +1,23 @@
-\chapter{Interface Gráfica (UI)}
+\chapter{Conceitos Iniciais}
 
-\section{Android}
-\subsection{Activities}
-A plataforma Android oferece algumas opções de criação de interfaces telas. A principal maneira de 
-fazê-lo é utilizando uma classe nativa chamada Activity. A classe Activity é responsável por carregar uma 
-user interface (UI) é definida através de um arquivo XML de layout usualmente guardado no diretório 
-/res/layout do projeto.
+\section{Interface Gr\'afica (UI)}
+Interface gráfica, comumente abreviada para UI (do inglês User Interface) é a 
+parte da aplicação que o usuário vê e com a qual ele interage. \cite{Chong2004}
+A interface inclui as telas, janelas, controles, menus e etc. \cite{Chong2004}
 
-No exemplo a seguir, modificado do projeto RestauranteUniversitário, a classe MainActivity herda da classe
-AppCompactActivity (um dos tipos de Activity fornecidas pelo Android), e carrega a user interface 
-activity\_main.
+De acordo com um estudo publicado pelo IEEE \cite{Khalid2015} sobre os motivos pelos 
+quais os usuários mais reclamam de aplicações móveis, a interface gráfica é um dos 
+casos mais frequentes. O que demonstra a necessidade de empenho no desenvolvimento
+de interfaces agradáveis e intuitivas.
 
+Não é de se estranhar que as empresas desenvolvedoras dos sistemas operacionais
+cujas plataformas móveis são as mais competitivas no mercado ofereçam maneiras de
+padronizar as interfaces dos aplicativos feitos para suas plataformas.
 
-\lstset{language=Java}
+De fato, a Google e a Apple oferecem dentro de seus SDKs ferramentas de padronização
+de interfaces. No caso da Google, esse conjunto de ferramentas
+é chamado de Material Design e, além de ser oferecido para o Android, também
+pode ser utilizada nas plataformas Web, Flutter e, inclusive, iOS.
+Já a Apple, oferece seu kit gráfico, o UIKit, apenas para sua própria plataforma.
 
-\begin{lstlisting}
-// MainActivity.java
-
-package br.ufrj.ct.restauranteuniversitario;
-
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
-    
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        //set the layout from the res/layout folder
-        setContentView(R.layout.activity_main);
-        
-     }
-}
-
-\end{lstlisting}
-
-Note que o método onCreate é chamado quando a Activity é criada. Ainda mais, existe 
-todo um ciclo de vida que define o comportamento de uma Activity dada a interação dela com o 
-usuário, conforme mostrado na figura a seguir.
-
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=\textwidth]{images/android_activity_lifecycle}
-    \caption[Exemplo de detecção das trilhas de transformações]
-    {Ciclo de vida de uma Activity do Android.}%
-    \label{fig:android_activity_lifecycle}
-\end{figure}
-
-
+\section{Experiência do Usu\'ario (UX)}

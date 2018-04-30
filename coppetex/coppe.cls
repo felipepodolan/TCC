@@ -51,7 +51,7 @@
 \def\fileversion{v2.1.1}
 \def\filedate{2009/11/17}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{coppe}[\filedate\ \fileversion\ COPPE Dissertations and Thesis]
+\ProvidesClass{coppetex/coppe}[\filedate\ \fileversion\ COPPE Dissertations and Thesis]
 \LoadClass[12pt,a4paper,oneside]{book}
 \RequirePackage[sort&compress]{natbib}
 \RequirePackage{hyphenat}
@@ -369,6 +369,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \setlength\baselineskip{0pt}
   \setlength\parskip{1mm}
   \makebox[20mm][c]{\hspace{4.8cm}\includegraphics{coppetex/escola-politecnica}}
+  \fi
   \end{flushleft}
   \vspace{1.05cm}
   \begin{center}
@@ -593,7 +594,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       \end{tabularx}}\par
       %\nohyphens{\local@doctype\ ({\MakeLowercase\@degreename}) --
       \nohyphens{Projeto ({\MakeLowercase\@degreename}) --
-      UFRJ/ Escola Polit{\'e}cnica/ Curso de Computa{\c c}{\~ a}o e Informa{\c c}{\~ a}o, \number\year.}\par
+      UFRJ/ Escola Polit{\'e}cnica/ Curso de Engenharia de Computa{\c c}{\~ a}o e Informa{\c c}{\~ a}o, \number\year.}\par
       \bibname: p. \pageref{bib:begin} -- \pageref{bib:end}.\par
       \count1=0
       \count2=1
@@ -604,7 +605,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       I. \csname CoppeAdvisorSurname:0\endcsname,%
       \ \csname CoppeAdvisorName:0\endcsname%
       \ifthenelse{\@advisor>1}{\ \emph{et~al.}{}}.
-      II. \local@universityname, Escola Polit{\'e}cnica/ Curso de Computa{\c c}{\~ a}o e Informa{\c c}{\~ a}o.
+      II. \local@universityname, Escola Polit{\'e}cnica/ Curso de Engenharia de Computa{\c c}{\~ a}o e Informa{\c c}{\~ a}o.
       III. T{\' i}tulo.}
     \end{minipage}}
   \end{center}
@@ -917,7 +918,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\frontcover@maintext{
   \sloppy\nohyphens{\local@doctype\ de \@degreename\
   \ifthenelse{\boolean{maledoc}}{apresentado}{apresentada}
-  ao Curso de Computa{\c c}{\~ a}o e Informa{\c c}{\~ a}o da
+  ao Curso de Engenharia de Computa{\c c}{\~ a}o e Informa{\c c}{\~ a}o da
   Escola Polit{\' e}cnica da Universidade Federal do Rio de
   Janeiro como parte dos requisitos necess{\' a}rios para a
   obten{\c c}{\~ a}o do grau de \local@degname\ de
@@ -928,7 +929,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \newcommand\frontpage@maintext{
   \noindent {\MakeUppercase\local@doctype}
   \ifthenelse{\boolean{maledoc}}{SUBMETIDO}{SUBMETIDA}
-  \sloppy\nohyphens{AO CORPO DOCENTE DO CURSO DE
+  \sloppy\nohyphens{AO CORPO DOCENTE DO CURSO DE ENGENHARIA DE
   COMPUTA{\c C}{\~ A}O E INFORMA{\c C}{\~ A}O DA ESCOLA POLIT{\' E}CNICA DA
   UNIVERSIDADE FEDERAL DO RIO DE JANEIRO COMO PARTE DOS REQUISITOS NECESS{\' A}RIOS PARA A
   OBTEN{\c C}{\~ A}O DO GRAU DE {\MakeUppercase\local@degname} DE
