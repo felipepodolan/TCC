@@ -1,12 +1,123 @@
 % Encoding: UTF-8
 
-@Article{Chong2004,
-  author        = {Chong, Peter Han Joo and So, Ping Lam and Shum, P and Li, Xue Jun and Goyal, D},
-  title         = {Design and implementation of user interface for mobile devices},
-  journal       = {IEEE Transactions on Consumer Electronics},
-  year          = {2004},
-  volume        = {50},
-  number        = {4},
-  pages         = {1156--1161},
-  publisher     = {IEEE},
+@Article{Khalid2015,
+  author    = {Khalid, Hammad and Shihab, Emad and Nagappan, Meiyappan and Hassan, Ahmed E},
+  title     = {What do mobile app users complain about?},
+  journal   = {IEEE Software},
+  year      = {2015},
+  volume    = {32},
+  number    = {3},
+  pages     = {70--77},
+  publisher = {IEEE},
 }
+
+@InProceedings{Law2008,
+  author       = {Law, Effie and Roto, Virpi and Vermeeren, Arnold P. O. S. and Kort, Joke and Hassenzahl, Marc},
+  title        = {Towards a shared definition of user experience},
+  booktitle    = {CHI'08 extended abstracts on Human factors in computing systems},
+  year         = {2008},
+  pages        = {2395--2398},
+  organization = {ACM},
+}
+
+@Misc{materialdesign,
+  author   = {Google},
+  title    = {Material Design},
+  month    = may,
+  year     = {2018},
+  comment  = {Acessado em 01/05/2018},
+  language = {portuguese},
+  owner    = {Google Inc.},
+  url      = {https://material.io},
+}
+
+@Misc{documentationapple,
+  author   = {Apple},
+  title    = {Apple Developer Documentation},
+  month    = may,
+  year     = {2018},
+  comment  = {Acessado em 01/05/2018},
+  language = {portuguese},
+  owner    = {Apple Inc},
+  url      = {https://developer.apple.com/documentation},
+}
+
+@Article{Chong2004,
+  author    = {Chong, Peter Han Joo and So, Ping Lam and Shum, P and Li, Xue Jun and Goyal, D},
+  title     = {Design and implementation of user interface for mobile devices},
+  journal   = {IEEE Transactions on Consumer Electronics},
+  year      = {2004},
+  volume    = {50},
+  number    = {4},
+  pages     = {1156--1161},
+  publisher = {IEEE},
+}
+
+@Book{Daigneau2011,
+  title     = {Service Design Patterns: fundamental design solutions for SOAP/WSDL and restful Web Services},
+  publisher = {Addison-Wesley},
+  year      = {2011},
+  author    = {Daigneau, Robert},
+}
+
+@Article{Ferris2004,
+  author    = {Ferris, Chris},
+  title     = {Web services architecture},
+  journal   = {Standard, W3C World},
+  year      = {2004},
+  pages     = {10},
+  publisher = {W3C Working Group},
+}
+
+@Book{Tanenbaum2011,
+  title     = {Redes de Computadores (Em Português do Brasil)},
+  publisher = {Campus},
+  year      = {2003},
+  author    = {Tanenbaum, Andrew S.},
+  isbn      = {857605924X},
+}
+
+@Book{Biehl2015,
+  title     = {API Architecture: The Big Picture for Building APIs (API University Series) (Volume 2)},
+  publisher = {CreateSpace Independent Publishing Platform},
+  year      = {2015},
+  author    = {Matthias Biehl},
+  isbn      = {9781508676645},
+}
+
+@Article{Castillo2011,
+  author  = {Castillo, Pedro A and Bernier, Jos{\'e} Luis and Arenas, Maribel Garc{\'\i}a and Merelo, JJ and Garcia-Sanchez, Pablo},
+  title   = {SOAP vs REST: Comparing a master-slave GA implementation},
+  journal = {arXiv preprint arXiv:1105.4978},
+  year    = {2011},
+}
+
+@Article{Wagh2012,
+  author        = {Wagh, Kishor and Thool, Ravindra},
+  title         = {A comparative study of soap vs rest web services provisioning techniques for mobile host},
+  journal       = {Journal of Information Engineering and Applications},
+  year          = {2012},
+  volume        = {2},
+  number        = {5},
+  pages         = {12--16},
+  __markedentry = {[felipe:]},
+}
+
+@Book{DiMarzio2016,
+  title         = {Beginning Android Programming with Android Studio},
+  publisher     = {John Wiley \& Sons},
+  year          = {2016},
+  author        = {DiMarzio, Jerome},
+  __markedentry = {[felipe:6]},
+}
+
+@Book{ibge2015,
+  title     = {Acesso a Internet e a televisao e posse de telefone movel celular para uso pessoal, 2015
+   : Pesquisa Nacional por Amostra de Domicilios},
+  publisher = {Rio de Janeiro : IBGE, Instituto Brasileiro de Geografia e Estatistica},
+  year      = {2016},
+  author    = {Instituto Brasileiro de Geografia e Estatistica. Coordenação de Trabalho e Rendimento},
+  isbn      = {9788524044052},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}

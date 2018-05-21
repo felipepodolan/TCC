@@ -1,6 +1,8 @@
 \documentclass[grad,pdftex,numbers]{coppetex/coppe}
 \usepackage{amsmath,amssymb}
 \usepackage{hyperref}
+\usepackage{float}
+\usepackage{csquotes}
 \usepackage[utf8]{inputenc}
 
 \usepackage{listings}
@@ -52,7 +54,7 @@
 
   \frontmatter
   \tableofcontents
-  %\listoffigures
+  \listoffigures
   %\listoftables
   \printlosymbols
   \printloabbreviations
@@ -62,7 +64,7 @@
   \include{chapter02}
 
   \backmatter
-  \bibliographystyle{plain}
+  \bibliographystyle{IEEEtran}
   \bibliography{bibliography.bib}
 
   %\appendix
